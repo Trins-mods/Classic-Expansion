@@ -1,6 +1,7 @@
 package trinsdar.classicexpansion.machine;
 
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
+import tesseract.TesseractConfig;
 import tesseract.api.gt.GTTransaction;
 
 public class ThermalEnergyHandler<T extends TileThermalMachine<T>> extends MachineEnergyHandler<T> {
@@ -15,5 +16,21 @@ public class ThermalEnergyHandler<T extends TileThermalMachine<T>> extends Machi
             //Utils.createExplosion(this.tile.getLevel(), tile.getBlockPos(), 4.0F, Explosion.BlockInteraction.DESTROY);
         }
         return true;
+    }
+
+    @Override
+    public boolean addEnergy(GTTransaction.TransferData data) {
+        return super.addEnergy(data);
+    }
+
+    //TRE
+    public boolean supportsInsertion() {
+        return canInput();
+    }
+
+
+    //FE
+    public boolean canReceive() {
+        return canInput();
     }
 }
